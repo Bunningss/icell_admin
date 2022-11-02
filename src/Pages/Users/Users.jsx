@@ -18,7 +18,6 @@ const Users = () => {
     };
     getUsers();
   }, []);
-
   return (
     <div className='users'>
       <h2 className="header user-header">All Users</h2>

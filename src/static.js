@@ -23,10 +23,11 @@ export const familyColumns = [
 // Mahal
 export const mahalColumns = [
   {
-    field: "Mahallu ID",
+    field: "MahalluId",
     mahalId: "MahalId",
     width: 230,
     renderCell: (params) => {
+
       return (
         <div className="cellWithImg">
           {params.row.MahalId}
@@ -35,10 +36,11 @@ export const mahalColumns = [
     },
   },
   {
-    field: "Mahallu Name",
-    MahalluName: "Mahallu Name",
+    field: "MahalluName",
+    MahalluName: "MahalluName",
     width: 230,
     renderCell: (params) => {
+
       return (
         <div className="cell">
           {params.row.MahalluName}
@@ -120,7 +122,7 @@ export const familyAction = [
         console.log(params.row)
         return (
           <div className="cellAction">
-            <Link to={`/family/details/info/${params.row.FamilyId}`} style={{ textDecoration: "none" }}>
+            <Link to={`/family/details/info`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
           </div>
@@ -138,7 +140,7 @@ export const familyAction = [
         console.log(params.row)
         return (
           <div className="cellAction">
-            <Link to={`/family/details/info/${params.row.FamilyId}`} style={{ textDecoration: "none" }}>
+            <Link to={`/family/details/info/d`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
           </div>
