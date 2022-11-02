@@ -7,6 +7,7 @@ import Families from './Pages/Families/Families';
 import Communities from './Pages/Communities/Communities';
 import Users from './Pages/Users/Users';
 import User from './Pages/User/User';
+import ViewFamily from './Pages/ViewFamily/ViewFamily';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route exact path='/user/:id' element={<User/>}/>
           <Route exact path='/communities' element={<Communities/>}/>
           <Route exact path='/families' element={<Families/>}/>
+          <Route exact path='/families/:id' element={<ViewFamily/>}/>
         </Routes>
       </div>
     </div>

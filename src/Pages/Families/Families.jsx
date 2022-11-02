@@ -21,7 +21,7 @@ const Families = () => {
 
   return (
     <div className='families'>
-      <h2 className="header families-header">All Families</h2>
+      <h2 className="header section-header background">All Families</h2>
       <Datatable dataColumns={familyColumns} dataRows={rows} actionColumn={familyAction}/>
     </div>
   )

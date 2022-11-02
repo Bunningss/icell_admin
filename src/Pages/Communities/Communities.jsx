@@ -21,7 +21,7 @@ const Communities = () => {
 
   return (
     <div className='communities'>
-      <h2 className="header community-header">All Mahals</h2>
+      <h2 className="header section-header background">All Mahals</h2>
       <Datatable dataColumns={mahalColumns} dataRows={rows} actionColumn={mahalAction}/>
     </div>
   )

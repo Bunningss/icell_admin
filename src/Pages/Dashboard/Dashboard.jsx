@@ -1,6 +1,6 @@
 import './Dashboard.scss';
 import Datatable from '../../Components/datatable/Datatable';
-import { familyColumns, mahalColumns, userAction } from "../../static";
+import { familyColumns, mahalColumns, userAction, mahalAction } from "../../static";
 import { useEffect, useState } from 'react';
 import { publicRequest } from '../../requestMethods';
 
@@ -11,9 +11,8 @@ const Dashboard = () => {
   useEffect(() => {
     const getFams = async () => {
       try {
-        const fam = await publicRequest.get("family/details/info");
+        const fam = await publicRequest.get("family/details/info?recent=recent");
         setfamilyRows(fam.data.data.data.families)
-        console.log(fam)
       } catch (err) {
         console.log(err)
       }
@@ -25,7 +24,7 @@ const Dashboard = () => {
 useEffect(() => {
   const getMahals = async () => {
     try {
-      const mahals = await publicRequest.get('/mahal/ids')
+      const mahals = await publicRequest.get('/mahal/ids?recent=recent')
       setMahalRows(mahals.data.data.data.ids)
     } catch (err) {
       console.log(err)
@@ -36,8 +35,8 @@ useEffect(() => {
 
   return (
     <div className='dashboard'>
-      <div className="col">
-        <h2 className="header dashboard-header">icell</h2>
+      <div className="col background">
+        <h2 className="header section-header dashboard-header">admin dashboard</h2>
       </div>
       <div className="col">
         <h2 className="header">Welcome, John Doe.</h2>
@@ -52,7 +51,7 @@ useEffect(() => {
           <div className="mahals recent-content">
               <p className='recent-text text-regular'>recently added mahals:</p>
             <div className="mahal-content data-table">
-                <Datatable dataColumns={mahalColumns} dataRows={mahalRows} actionColumn={userAction}/>
+                <Datatable dataColumns={mahalColumns} dataRows={mahalRows} actionColumn={mahalAction}/>
             </div>
           </div>
         </div>

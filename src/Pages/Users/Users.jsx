@@ -20,7 +20,7 @@ const Users = () => {
   }, []);
   return (
     <div className='users'>
-      <h2 className="header user-header">All Users</h2>
+      <h2 className="header section-header background">All Users</h2>
       <Datatable dataColumns={userColumns} dataRows={userRows} actionColumn={userAction}/>
     </div>
   )
