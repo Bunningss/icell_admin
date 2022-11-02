@@ -8,18 +8,18 @@ const Dashboard = () => {
   const [ familyRows, setfamilyRows ] = useState([]);
   const [ mahalRows, setMahalRows ] = useState([]);
 
-  // useEffect(() => {
-  //   const getFams = async () => {
-  //     try {
-  //       const fam = await publicRequest.get("family/details/info");
-  //       setfamilyRows(fam.data.data.data.families)
-  //       console.log(fam)
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   };
-  //   getFams();
-  // }, []);
+  useEffect(() => {
+    const getFams = async () => {
+      try {
+        const fam = await publicRequest.get("family/details/info");
+        setfamilyRows(fam.data.data.data.families)
+        console.log(fam)
+      } catch (err) {
+        console.log(err)
+      }
+    };
+    getFams();
+  }, []);
 
   // fetch mahal data 
 useEffect(() => {
@@ -33,12 +33,12 @@ useEffect(() => {
   };
   getMahals()
 }, [])
-console.log(mahalRows)
+
   return (
     <div className='dashboard'>
-      {/* <div className="col">
+      <div className="col">
         <h2 className="header dashboard-header">icell</h2>
-      </div> */}
+      </div>
       <div className="col">
         <h2 className="header">Welcome, John Doe.</h2>
         <p className="title dashboard-access">Authorization: <span>Admin</span></p>
