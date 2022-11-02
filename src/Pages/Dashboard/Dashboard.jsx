@@ -1,6 +1,6 @@
 import './Dashboard.scss';
 import Datatable from '../../Components/datatable/Datatable';
-import { familyColumns, mahalColumns } from "../../static";
+import { familyColumns, mahalColumns, userAction } from "../../static";
 import { useEffect, useState } from 'react';
 import { publicRequest } from '../../requestMethods';
 
@@ -46,13 +46,13 @@ console.log(mahalRows)
           <div className="families recent-content">
               <p className='recent-text text-regular'>recently added families:</p>
             <div className="family-content data-table">
-                {/* <Datatable dataColumns={familyColumns} dataRows={familyRows}/> */}
+                <Datatable dataColumns={familyColumns} dataRows={familyRows} actionColumn={userAction}/>
             </div>
           </div>
           <div className="mahals recent-content">
               <p className='recent-text text-regular'>recently added mahals:</p>
             <div className="mahal-content data-table">
-                {/* <Datatable dataColumns={mahalColumns} dataRows={mahalRows}/> */}
+                <Datatable dataColumns={mahalColumns} dataRows={mahalRows} actionColumn={userAction}/>
             </div>
           </div>
         </div>
