@@ -16,6 +16,13 @@
             }
         }
 
+        .info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 35px 0;
+        }
+
         .recent {
             width: 100%;
             display: flex;
@@ -26,10 +33,12 @@
 
                 .recent-text {
                     text-transform: capitalize;
+                    font-weight: 600;
+                    text-decoration: underline;
                 }
             }
 
-            .families {
+            .family {
                 flex: 1;
 //                 background-color: green;
             }

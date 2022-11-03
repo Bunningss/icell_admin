@@ -5,10 +5,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
 import PeopleIcon from '@mui/icons-material/People';
 import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
 import logo from '../../images/logo.png';
 
 const Sidebar = () => {
-    const user = false
+
+    const user = false;
+    
   return (
     <div className='sidebar'>
         <div className="col">
@@ -45,7 +48,7 @@ const Sidebar = () => {
                         <p className="text-regular logout">Logout</p>
                     </> :
                     <Link to='/login'>
-                        <LogoutIcon className='text-regular icon'/>
+                        <LoginIcon className='text-regular icon'/>
                         <p className="text-regular logout">Login</p>
                     </Link>
                 }

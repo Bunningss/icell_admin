@@ -3,8 +3,9 @@ import Datatable from '../../Components/datatable/Datatable';
 import { familyColumns, mahalColumns, userAction, mahalAction } from "../../static";
 import { useEffect, useState } from 'react';
 import { publicRequest } from '../../requestMethods';
+import InfoBox from '../../Components/InfoBox/InfoBox';
 
-const Dashboard = () => {
+const Dashboard = ({ toolboxData }) => {
   const [ familyRows, setfamilyRows ] = useState([]);
   const [ mahalRows, setMahalRows ] = useState([]);
 
@@ -41,8 +42,15 @@ useEffect(() => {
       <div className="col">
         <h2 className="header">Welcome, John Doe.</h2>
         <p className="title dashboard-access">Authorization: <span>Admin</span></p>
+        <div className="info">
+          {
+            toolboxData.map((data, indx) => (
+              <InfoBox data={data} key={indx}/>
+            ))
+          }
+        </div>
         <div className="recent">
-          <div className="families recent-content">
+          <div className="family recent-content">
               <p className='recent-text text-regular'>recently added families:</p>
             <div className="family-content data-table">
                 <Datatable dataColumns={familyColumns} dataRows={familyRows} actionColumn={userAction}/>
