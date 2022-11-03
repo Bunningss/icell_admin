@@ -1,13 +1,16 @@
 import './ViewFamily.scss';
 import { publicRequest } from '../../requestMethods';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import MemberCard from '../../Components/MemberCard/MemberCard';
+import FamilyMember from '../../Components/FamilyMember/FamilyMember';
+import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 
 const ViewFamily = () => {
   const  [ family, setFamily ] = useState({})
   const location = useLocation();
   const id = location.pathname.split('/')[2];
+
+  const pdfExportComponent = useRef(null)
 
   useEffect(() => {
     const getFamily =async () => {
@@ -21,8 +24,14 @@ const ViewFamily = () => {
     getFamily();
   }, []);
 
+  const handleClick = () => {
+    pdfExportComponent.current.save()
+  }
+
   return (
     <div className='view-family'>
+      <button className="button" onClick={handleClick}>Download as PDF</button>
+    <PDFExport ref={pdfExportComponent}>
       {
         family.family &&
         <div className="family background">
@@ -48,11 +57,12 @@ const ViewFamily = () => {
           {
             family.member &&
             family.member.map((m, indx) => (
-              <MemberCard member={m} key={indx}/>
+              <FamilyMember member={m} key={indx}/>
             ))
           }
         </div>
       </div>
+    </PDFExport>
     </div>
   )
 }

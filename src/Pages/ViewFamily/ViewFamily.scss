@@ -1,7 +1,21 @@
 .view-family {
-    padding: 10px;
+    // padding: 10px;
+    position: relative;
+
+    .button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 15px;
+        border: none;
+        background-color: var(--font-primary);
+        color: var(--color-secondary);
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
     .family {
+        // padding: 10px;
         // margin: 10px 0;
 
         .family-text {
