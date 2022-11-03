@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import FamilyMember from '../../Components/FamilyMember/FamilyMember';
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
+import logo from '../../images/logo.png';
 
 const ViewFamily = () => {
   const  [ family, setFamily ] = useState({})
@@ -32,6 +33,7 @@ const ViewFamily = () => {
     <div className='view-family'>
       <button className="button" onClick={handleClick}>Download as PDF</button>
     <PDFExport ref={pdfExportComponent}>
+      <img src={logo} alt="" className="logo" />
       {
         family.family &&
         <div className="family background">

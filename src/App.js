@@ -8,8 +8,12 @@ import Communities from './Pages/Communities/Communities';
 import Users from './Pages/Users/Users';
 import User from './Pages/User/User';
 import ViewFamily from './Pages/ViewFamily/ViewFamily';
+import Login from './Pages/Login/Login';
 
 function App() {
+  
+  const user = true;
+
   return (
     <BrowserRouter>
     <div style={{ display: 'flex'}}>
@@ -18,12 +22,18 @@ function App() {
       </div>
       <div style={{ flex:"5"}}>
         <Routes>
-          <Route exact path='/' element={<Dashboard/>} />
-          <Route exact path='/users' element={<Users/>}/>
-          <Route exact path='/user/:id' element={<User/>}/>
-          <Route exact path='/communities' element={<Communities/>}/>
-          <Route exact path='/families' element={<Families/>}/>
-          <Route exact path='/families/:id' element={<ViewFamily/>}/>
+          {
+            user &&
+            <>
+              <Route exact path='/' element={<Dashboard/>} />
+              <Route exact path='/users' element={<Users/>}/>
+              <Route exact path='/user/:id' element={<User/>}/>
+              <Route exact path='/communities' element={<Communities/>}/>
+              <Route exact path='/families' element={<Families/>}/>
+              <Route exact path='/families/:id' element={<ViewFamily/>}/>
+            </>
+          }
+          <Route exact path='/login' element={<Login/>} />
         </Routes>
       </div>
     </div>
