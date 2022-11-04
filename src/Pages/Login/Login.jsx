@@ -26,6 +26,7 @@ const Login = () => {
       const result = await publicRequest.post('user/login', data);
       dispatch(loginSuccess(result.data.data));
       navigate('/');
+      window.location.reload();
     } catch (err) {
       setError(err.response.data.error.error);
       dispatch(loginFailure());

@@ -1,5 +1,5 @@
 import './Sidebar.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../Redux/userRedux';
 
@@ -12,11 +12,13 @@ import logo from '../../images/logo.png';
 
 const Sidebar = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const user = useSelector((state) => state.user);
 
     const handleLogout = () => {
-        dispatch(logout())
+        dispatch(logout());
+        navigate('/');
     };
     
   return (

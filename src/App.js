@@ -72,10 +72,10 @@ useEffect(() => {
       </div>
       <div style={{ flex:"5"}}>
         <Routes>
+            <Route exact path='/' element={ user.currentUser ? <Dashboard toolboxData={toolboxData}/> : <Login/> } />
           {
             user.currentUser &&
             <>
-              <Route exact path='/' element={<Dashboard toolboxData={toolboxData}/>} />
               <Route exact path='/users' element={<Users/>}/>
               <Route exact path='/communities' element={<Communities/>}/>
               <Route exact path='/families' element={<Families/>}/>
