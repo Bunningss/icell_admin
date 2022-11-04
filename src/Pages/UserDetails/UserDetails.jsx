@@ -1,13 +1,13 @@
 import './UserDetails.scss';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import DetailsCard from '../../Components/DetailsCard/DetailsCard';
 import { userReq } from '../../requestMethods';
+import DetailsCard from '../../Components/DetailsCard/DetailsCard';
 import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
 
 const UserDetails = () => {
     const [data, setData] = useState({});
-    const [ status, setStatus ] = useState('');
+    const [ status, setStatus ] = useState(null);
     const [ error, setError ] = useState('');
     const location = useLocation();
     const id = location.pathname.split('/')[3];
@@ -26,13 +26,13 @@ const UserDetails = () => {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        if (status === '') {
+        if (!status) {
             setError("Select a value");
             return
         }
         try {
             const result = await userReq.put(`/user/update/${id}`, {Status: status});
-            result.data.data.data && window.location.reload()
+            result.data.data.data && window.location.reload();
         } catch (err) {
             console.log(err)
         }

@@ -10,11 +10,13 @@
     flex-direction: column;
 
     .infobox-header {
+        text-align: center;
         text-transform: capitalize;
         color: var(--color-primary);
     }
 
     .infobox-text {
+        text-align: center;
         text-transform: capitalize;
     }
 }

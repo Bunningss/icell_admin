@@ -2,6 +2,7 @@ import './FormInput.scss'
 
 const FormInput = ({ input, handleChange }) => {
   const { errorMsg, placeholder, ...others } = input
+
   return (
     <>
       <label htmlFor="" className='placeholder'>{placeholder}</label>

@@ -1,3 +1,16 @@
 .mahal-details {
     padding: 10px;
+
+    .mahal-form {
+
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mahal-form-text {
+            margin: 15px 0;
+            text-transform: capitalize;
+        }
+    }
 }
