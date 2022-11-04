@@ -1,5 +1,7 @@
 import './Sidebar.scss';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../Redux/userRedux';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
@@ -9,8 +11,13 @@ import LoginIcon from '@mui/icons-material/Login';
 import logo from '../../images/logo.png';
 
 const Sidebar = () => {
+    const dispatch = useDispatch();
 
-    const user = false;
+    const user = useSelector((state) => state.user);
+
+    const handleLogout = () => {
+        dispatch(logout())
+    };
     
   return (
     <div className='sidebar'>
@@ -42,11 +49,11 @@ const Sidebar = () => {
             </ul>
             <div className="logout-wrapper">
                 {
-                    user ?
-                    <>
+                    user.currentUser ?
+                    <div onClick={handleLogout}>
                         <LogoutIcon className='text-regular icon'/>
                         <p className="text-regular logout">Logout</p>
-                    </> :
+                    </div> :
                     <Link to='/login'>
                         <LoginIcon className='text-regular icon'/>
                         <p className="text-regular logout">Login</p>

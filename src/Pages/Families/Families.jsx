@@ -20,7 +20,7 @@ const Families = () => {
   }, []);
 
   return (
-    <div className='families'>
+    <div className='families default'>
       <h2 className="header section-header background">All Families</h2>
       <Datatable dataColumns={familyColumns} dataRows={rows} actionColumn={familyAction}/>
     </div>

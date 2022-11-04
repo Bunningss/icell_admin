@@ -1,4 +1,4 @@
-import './FamilyMember.scss';
+import './DetailsCard.scss';
 
 const FamilyMember = ({ member }) => {
     

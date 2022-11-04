@@ -122,7 +122,7 @@ export const familyAction = [
 
         return (
           <div className="cellAction">
-            <Link to={`/users/${params.row._id}`} style={{ textDecoration: "none" }}>
+            <Link to={`/user/details/${params.row._id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
           </div>
@@ -140,7 +140,7 @@ export const familyAction = [
 
         return (
           <div className="cellAction">
-            <Link to={`/communities/${params.row.MahalId}`} style={{ textDecoration: "none" }}>
+            <Link to={`/mahal/details/${params.row.MahalId}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
           </div>

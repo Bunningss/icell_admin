@@ -1,13 +1,16 @@
 import './Dashboard.scss';
 import Datatable from '../../Components/datatable/Datatable';
-import { familyColumns, mahalColumns, userAction, mahalAction } from "../../static";
+import { familyColumns, mahalColumns, familyAction, mahalAction } from "../../static";
 import { useEffect, useState } from 'react';
 import { publicRequest } from '../../requestMethods';
 import InfoBox from '../../Components/InfoBox/InfoBox';
+import { useSelector } from 'react-redux';
 
 const Dashboard = ({ toolboxData }) => {
   const [ familyRows, setfamilyRows ] = useState([]);
   const [ mahalRows, setMahalRows ] = useState([]);
+
+  const user = useSelector((state) => state.user)
 
   useEffect(() => {
     const getFams = async () => {
@@ -35,13 +38,13 @@ useEffect(() => {
 }, [])
 
   return (
-    <div className='dashboard'>
+    <div className='dashboard default'>
       <div className="col background">
         <h2 className="header section-header dashboard-header">admin dashboard</h2>
       </div>
       <div className="col">
-        <h2 className="header">Welcome, John Doe.</h2>
-        <p className="title dashboard-access">Authorization: <span>Admin</span></p>
+        <h2 className="header">Welcome, {user.currentUser?.User?.FirstName + ' ' + user.currentUser?.User?.LastName}.</h2>
+        <p className="title dashboard-access">Authorization: <span>{user.currentUser?.User?.Role}</span></p>
         <div className="info">
           {
             toolboxData.map((data, indx) => (
@@ -53,7 +56,7 @@ useEffect(() => {
           <div className="family recent-content">
               <p className='recent-text text-regular'>recently added families:</p>
             <div className="family-content data-table">
-                <Datatable dataColumns={familyColumns} dataRows={familyRows} actionColumn={userAction}/>
+                <Datatable dataColumns={familyColumns} dataRows={familyRows} actionColumn={familyAction}/>
             </div>
           </div>
           <div className="mahals recent-content">

@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { publicRequest } from './requestMethods';
 import { useEffect, useState } from 'react';
 
 import Sidebar from './Components/Sidebar/Sidebar';
@@ -7,10 +8,11 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Families from './Pages/Families/Families';
 import Communities from './Pages/Communities/Communities';
 import Users from './Pages/Users/Users';
-import User from './Pages/User/User';
 import ViewFamily from './Pages/ViewFamily/ViewFamily';
 import Login from './Pages/Login/Login';
-import { publicRequest } from './requestMethods';
+import MahalDetails from './Pages/MahalDetails/MahalDetails';
+import UserDetails from './Pages/UserDetails/UserDetails';
+import { useSelector } from 'react-redux';
 
 function App() {
   const [ family, setFamily ] = useState('');
@@ -56,7 +58,7 @@ useEffect(() => {
 }, []);
 
 
-  const user = true;
+  const user = useSelector((state) => state.user );
 
   return (
     <BrowserRouter>
@@ -67,18 +69,19 @@ useEffect(() => {
       <div style={{ flex:"5"}}>
         <Routes>
           {
-            user &&
+            user.currentUser &&
             <>
               <Route exact path='/' element={<Dashboard toolboxData={toolboxData}/>} />
               <Route exact path='/users' element={<Users/>}/>
-              <Route exact path='/user/:id' element={<User/>}/>
               <Route exact path='/communities' element={<Communities/>}/>
               <Route exact path='/families' element={<Families/>}/>
               <Route exact path='/families/:id' element={<ViewFamily/>}/>
+              <Route exact path='/mahal/details/:id' element={<MahalDetails/>}/>
+              <Route exact path='/user/details/:id' element={<UserDetails/>}/>
             </>
           }
           {
-            user &&
+            !user.currentUser &&
             <Route exact path='/login' element={<Login/>} />
           }
         </Routes>

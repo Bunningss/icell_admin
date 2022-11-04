@@ -24,6 +24,10 @@ a {
     text-decoration: none;
 }
 
+.default {
+    animation: reveal 1s linear;
+}
+
 .header {
     font-size: 50px;
 }
@@ -48,4 +52,14 @@ a {
     font-family: var(--ubuntu);
     color: var(--color-primary);
     border-bottom: 1px solid var(--font-primary);
+    user-select: none;
+}
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

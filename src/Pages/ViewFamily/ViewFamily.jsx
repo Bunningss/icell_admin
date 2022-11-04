@@ -2,7 +2,7 @@ import './ViewFamily.scss';
 import { publicRequest } from '../../requestMethods';
 import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import FamilyMember from '../../Components/FamilyMember/FamilyMember';
+import DetailsCard from '../../Components/DetailsCard/DetailsCard';
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 import logo from '../../images/logo.png';
 
@@ -30,7 +30,7 @@ const ViewFamily = () => {
   }
 
   return (
-    <div className='view-family'>
+    <div className='view-family default'>
       <button className="button" onClick={handleClick}>Download as PDF</button>
     <PDFExport ref={pdfExportComponent}>
       <img src={logo} alt="" className="logo" />
@@ -59,7 +59,7 @@ const ViewFamily = () => {
           {
             family.member &&
             family.member.map((m, indx) => (
-              <FamilyMember member={m} key={indx}/>
+              <DetailsCard member={m} key={indx}/>
             ))
           }
         </div>

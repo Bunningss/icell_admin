@@ -20,7 +20,7 @@ const Communities = () => {
   }, []);
 
   return (
-    <div className='communities'>
+    <div className='communities default'>
       <h2 className="header section-header background">All Mahals</h2>
       <Datatable dataColumns={mahalColumns} dataRows={rows} actionColumn={mahalAction}/>
     </div>

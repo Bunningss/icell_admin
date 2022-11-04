@@ -19,7 +19,7 @@ const Users = () => {
     getUsers();
   }, []);
   return (
-    <div className='users'>
+    <div className='users default'>
       <h2 className="header section-header background">All Users</h2>
       <Datatable dataColumns={userColumns} dataRows={userRows} actionColumn={userAction}/>
     </div>
