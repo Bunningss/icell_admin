@@ -24,12 +24,23 @@ a {
     text-decoration: none;
 }
 
+$mobile: 600px;
+@mixin mobile {
+    @media (max-width: #{$mobile}) {
+        @content
+    }
+}
+
 .default {
     animation: reveal 1s linear;
 }
 
 .header {
     font-size: 50px;
+
+    @include mobile {
+        font-size: 30px;
+    }
 }
 
 .title {
@@ -41,7 +52,6 @@ a {
 }
 
 .background {
-    background-color: var(--color-accent);
     padding: 20px 0;
 }
 
@@ -66,12 +76,24 @@ a {
     text-transform: capitalize;
     border-radius: 5px;
     cursor: pointer;
+
+    @include mobile {
+        padding: 10px;
+    }
 }
 
 .error-message {
     margin: 5px 0;
     color: red;
     text-align: center;
+}
+
+.no-flex {
+    flex: 1;
+
+    @include mobile {
+        flex: 0;
+    }
 }
 
 @keyframes reveal {

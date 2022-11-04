@@ -1,8 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { publicRequest, userReq } from './requestMethods';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Sidebar from './Components/Sidebar/Sidebar';
+import Hamburger from './Components/Hamburger/Hamburger';
+import MobileSidebar from './Components/MobileSidebar/MobileSidebar';
 // Pages
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Families from './Pages/Families/Families';
@@ -12,7 +15,6 @@ import ViewFamily from './Pages/ViewFamily/ViewFamily';
 import Login from './Pages/Login/Login';
 import MahalDetails from './Pages/MahalDetails/MahalDetails';
 import UserDetails from './Pages/UserDetails/UserDetails';
-import { useSelector } from 'react-redux';
 import NewMahal from './Pages/NewMahal/NewMahal';
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
   const [ community, setCommunity ] = useState('');
   const [ admin, setAdmin ] = useState('');
   const [ familyMember, setFamilyMember ] = useState('');
+  const [ active, setActive ] = useState(false);
 
   const toolboxData = [
   {
@@ -66,8 +69,10 @@ useEffect(() => {
 
   return (
     <BrowserRouter>
+    <Hamburger active={active} setActive={setActive}/>
+    <MobileSidebar active={active} setActive={setActive}/>
     <div style={{ display: 'flex'}}>
-      <div style={{ flex: '1' }}>
+      <div className='no-flex'>
         <Sidebar/>
       </div>
       <div style={{ flex:"5"}}>

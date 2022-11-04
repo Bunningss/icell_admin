@@ -31,8 +31,7 @@ const ViewFamily = () => {
 
   return (
     <div className='view-family default'>
-      <button className="button" onClick={handleClick}>Download as PDF</button>
-    <PDFExport ref={pdfExportComponent}>
+    <PDFExport ref={pdfExportComponent} paperSize='A2'>
       <img src={logo} alt="" className="logo" />
       {
         family.family &&
@@ -65,6 +64,7 @@ const ViewFamily = () => {
         </div>
       </div>
     </PDFExport>
+      <button className="button" onClick={handleClick}>Download as PDF</button>
     </div>
   )
 }

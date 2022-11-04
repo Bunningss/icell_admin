@@ -1,0 +1,48 @@
+@import '../../index.scss';
+
+.hamburger {
+    margin: 20px 0;
+    height: 20px;
+    width: 30px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+
+    @include mobile {
+        display: flex;
+    }
+
+    &.active {
+
+        .line {
+
+            &:nth-child(2) {
+                transform: translateX(-20px);
+            }
+        }
+    }
+
+    .line {
+        background-color: var(--color-primary);
+        height: 2px;
+        width: 100%;
+        transition: transform .5s ease;
+
+        &:nth-child(1) {
+            width: 50%;
+        }
+
+        &:nth-child(2) {
+            transform: translateX(6px);
+        }
+
+        &:nth-child(3) {
+            width: 50%;
+        }
+    }
+}

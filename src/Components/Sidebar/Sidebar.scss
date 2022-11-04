@@ -1,7 +1,13 @@
+@import '../../index.scss';
+
 .sidebar {
     min-height: 100vh;
     height: 100%;
     border-right: .5px solid var(--color-secondary);
+
+    @include mobile {
+        display: none;
+    }
 
     .col {
         padding: 5px;

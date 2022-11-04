@@ -1,3 +1,5 @@
+@import '../../index.scss';
+
 .dashboard {
 
     .col {
@@ -21,12 +23,20 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             margin: 35px 0;
+
+            @include mobile {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .recent {
             width: 100%;
             display: flex;
             gap: 10px;
+
+            @include mobile {
+                flex-direction: column;
+            }
 
             .recent-content {
                 margin: 10px 0;
