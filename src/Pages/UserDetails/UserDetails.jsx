@@ -24,7 +24,8 @@ const UserDetails = () => {
         getDetails();
     }, [id]);
 
-    const handleClick = async () => {
+    const handleClick = async (e) => {
+        e.preventDefault();
         if (status === '') {
             setError("Select a value");
             return
