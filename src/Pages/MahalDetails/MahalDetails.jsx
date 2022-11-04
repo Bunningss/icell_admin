@@ -19,10 +19,10 @@ const MahalDetails = () => {
             }
         }
         getDetails();
-    }, []);
+    }, [id]);
 
   return (
-    <div className='details default'>
+    <div className='mahal-details default'>
         <h2 className="header section-header">Mahallu details</h2>
         <DetailsCard member={data}/>
     </div>

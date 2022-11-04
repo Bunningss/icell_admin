@@ -2,9 +2,9 @@ import './Dashboard.scss';
 import Datatable from '../../Components/datatable/Datatable';
 import { familyColumns, mahalColumns, familyAction, mahalAction } from "../../static";
 import { useEffect, useState } from 'react';
-import { publicRequest } from '../../requestMethods';
-import InfoBox from '../../Components/InfoBox/InfoBox';
+import { publicRequest, userReq } from '../../requestMethods';
 import { useSelector } from 'react-redux';
+import InfoBox from '../../Components/InfoBox/InfoBox';
 
 const Dashboard = ({ toolboxData }) => {
   const [ familyRows, setfamilyRows ] = useState([]);
@@ -15,7 +15,7 @@ const Dashboard = ({ toolboxData }) => {
   useEffect(() => {
     const getFams = async () => {
       try {
-        const fam = await publicRequest.get("family/details/info?recent=recent");
+        const fam = await userReq.get("family/details/info?recent=recent");
         setfamilyRows(fam.data.data.data.families)
       } catch (err) {
         console.log(err)

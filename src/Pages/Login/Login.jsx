@@ -37,7 +37,7 @@ const Login = () => {
       <div className="wrapper">
         <form action="" className="form" onSubmit={handleSubmit}>
           <input type="text" placeholder='Enter Your Username' className='form-input' name='UserName' onChange={handleChange}/>
-          <input type="text" placeholder='Enter Your Password' className='form-input' name='Password' onChange={handleChange}/>
+          <input type="password" placeholder='Enter Your Password' className='form-input' name='Password' onChange={handleChange}/>
           {
             error &&
             <p className="error-message">{error}</p>

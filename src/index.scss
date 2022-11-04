@@ -55,6 +55,25 @@ a {
     user-select: none;
 }
 
+.button {
+    padding: 12px;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    font-size: 16px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    text-transform: capitalize;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error-message {
+    margin: 5px 0;
+    color: red;
+    text-align: center;
+}
+
 @keyframes reveal {
     0% {
         opacity: 0;

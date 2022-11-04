@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { publicRequest } from './requestMethods';
+import { publicRequest, userReq } from './requestMethods';
 import { useEffect, useState } from 'react';
 
 import Sidebar from './Components/Sidebar/Sidebar';
@@ -13,6 +13,7 @@ import Login from './Pages/Login/Login';
 import MahalDetails from './Pages/MahalDetails/MahalDetails';
 import UserDetails from './Pages/UserDetails/UserDetails';
 import { useSelector } from 'react-redux';
+import NewMahal from './Pages/NewMahal/NewMahal';
 
 function App() {
   const [ family, setFamily ] = useState('');
@@ -31,7 +32,7 @@ function App() {
   },
   {
     title: "family members",
-    number: ''
+    number: familyMember
   },
   {
     title: "Communities",
@@ -42,14 +43,17 @@ function App() {
 useEffect(() => {
   const getInfos = async () => {
     try {
-      const admins = await publicRequest.get("user/getall")
+      const admins = await userReq.get("user/getall")
       setAdmin(admins.data.data.users.length)
 
-      const families = await publicRequest.get("family/details/info");
+      const families = await userReq.get("family/details/info");
       setFamily(families.data.data.data.families.length)
 
       const communities = await publicRequest.get('/mahal/ids')
       setCommunity(communities.data.data.data.ids.length)
+
+      const familymemb = await userReq.get('family/allmembers')
+      setFamilyMember(familymemb.data.data.data.members.length)
     } catch (err) {
       console.log(err)
     }
@@ -78,6 +82,7 @@ useEffect(() => {
               <Route exact path='/families/:id' element={<ViewFamily/>}/>
               <Route exact path='/mahal/details/:id' element={<MahalDetails/>}/>
               <Route exact path='/user/details/:id' element={<UserDetails/>}/>
+              <Route exact path='/communities/new' element={<NewMahal/>}/>
             </>
           }
           {

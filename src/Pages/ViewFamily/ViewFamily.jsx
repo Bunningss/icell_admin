@@ -3,7 +3,7 @@ import { publicRequest } from '../../requestMethods';
 import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import DetailsCard from '../../Components/DetailsCard/DetailsCard';
-import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
+import { PDFExport } from '@progress/kendo-react-pdf';
 import logo from '../../images/logo.png';
 
 const ViewFamily = () => {
@@ -23,7 +23,7 @@ const ViewFamily = () => {
       }
     };
     getFamily();
-  }, []);
+  }, [id]);
 
   const handleClick = () => {
     pdfExportComponent.current.save()

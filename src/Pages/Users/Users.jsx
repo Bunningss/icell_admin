@@ -2,7 +2,7 @@ import './Users.scss';
 import { userColumns, userAction } from '../../static';
 import Datatable from '../../Components/datatable/Datatable';
 import { useEffect, useState } from 'react';
-import { publicRequest } from '../../requestMethods';
+import { userReq } from '../../requestMethods';
 
 const Users = () => {
   const [ userRows, setUserRows ] = useState([]);
@@ -10,7 +10,7 @@ const Users = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const users = await publicRequest.get('user/getall')
+        const users = await userReq.get('user/getall')
         setUserRows(users.data.data.users)
       } catch (err) {
         console.log(err)

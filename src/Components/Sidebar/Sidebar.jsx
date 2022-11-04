@@ -47,6 +47,18 @@ const Sidebar = () => {
                     </Link>
                 </li>
             </ul>
+            {/* Add New */}
+            {
+                user.currentUser &&
+                <ul className="sidebar-list">
+                    <li className="list-item">
+                        <Link to='/communities/new'>
+                            <PeopleIcon className='text-regular icon'/>
+                            <p className="text-regular sidebar-list-text">add new mahal</p>
+                        </Link>
+                    </li>
+                </ul>
+            }
             <div className="logout-wrapper">
                 {
                     user.currentUser ?

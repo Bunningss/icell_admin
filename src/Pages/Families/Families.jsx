@@ -1,7 +1,7 @@
 import './Families.scss';
 import { useEffect, useState } from 'react';
 import Datatable from '../../Components/datatable/Datatable';
-import { publicRequest } from '../../requestMethods';
+import { userReq } from '../../requestMethods';
 import { familyColumns, familyAction } from '../../static';
 
 const Families = () => {
@@ -10,7 +10,7 @@ const Families = () => {
   useEffect(() => {
     const getFamilies = async () => {
       try {
-        const families = await publicRequest.get('family/details/info')
+        const families = await userReq.get('family/details/info')
         setRows(families.data.data.data.families);
       } catch (err) {
         console.log(err)
