@@ -1,7 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { publicRequest, userReq } from './requestMethods';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import jwt_decode from 'jwt-decode';
+import { logout } from './Redux/userRedux';
 
 import Sidebar from './Components/Sidebar/Sidebar';
 import Hamburger from './Components/Hamburger/Hamburger';
@@ -23,6 +25,8 @@ function App() {
   const [ admin, setAdmin ] = useState('');
   const [ familyMember, setFamilyMember ] = useState('');
   const [ active, setActive ] = useState(false);
+
+  const dispatch = useDispatch();
 
   const toolboxData = [
   {
@@ -65,7 +69,14 @@ useEffect(() => {
 }, []);
 
 
-  const user = useSelector((state) => state.user );
+  const user = useSelector((state) => state.user);
+// Auto Logout
+  if (user?.currentUser?.token) {
+    const decoded = jwt_decode(user?.currentUser?.token)
+    if (decoded.exp * 1000 < Date.now()) {
+      dispatch(logout())
+    };
+  };
 
   return (
     <BrowserRouter>
