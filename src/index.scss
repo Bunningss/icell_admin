@@ -24,6 +24,13 @@ a {
     text-decoration: none;
 }
 
+$ipad: 820px;
+@mixin ipad {
+    @media (max-width: #{$ipad}) {
+        @content
+    }
+}
+
 $mobile: 600px;
 @mixin mobile {
     @media (max-width: #{$mobile}) {
@@ -37,6 +44,10 @@ $mobile: 600px;
 
 .header {
     font-size: 50px;
+
+    @include ipad {
+        font-size: 40px;
+    }
 
     @include mobile {
         font-size: 30px;
@@ -91,7 +102,7 @@ $mobile: 600px;
 .no-flex {
     flex: 1;
 
-    @include mobile {
+    @include ipad {
         flex: 0;
     }
 }

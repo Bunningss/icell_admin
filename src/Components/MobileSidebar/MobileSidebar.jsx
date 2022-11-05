@@ -5,6 +5,9 @@ const MobileSidebar = ({ active, setActive }) => {
   return (
     <div onClick={() => setActive(false)} className={active ? 'm-sidebar active default' : 'm-sidebar'}>
         <ul className="m-sidebar-list" >
+            <Link to='/'>
+                <li className="m-sidebar-list-item">Dashboard</li>
+            </Link>
             <Link to='/users'>
                 <li className="m-sidebar-list-item">Users</li>
             </Link>
