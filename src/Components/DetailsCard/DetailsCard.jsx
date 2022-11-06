@@ -1,9 +1,11 @@
 import './DetailsCard.scss';
 
 const FamilyMember = ({ member }) => {
+    console.log(member)
     
   return (
     <div className='member-card'>
+        <h2 className="header member-header">{member.MemberName}</h2>
         {
             <div className="container">
                 <div className="keys col">
