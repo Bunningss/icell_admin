@@ -1,5 +1,5 @@
 import './ViewFamily.scss';
-import { publicRequest } from '../../requestMethods';
+import { userReq } from '../../requestMethods';
 import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import DetailsCard from '../../Components/DetailsCard/DetailsCard';
@@ -11,12 +11,12 @@ const ViewFamily = () => {
   const location = useLocation();
   const id = location.pathname.split('/')[2];
 
-  const pdfExportComponent = useRef(null)
-
+  const pdfExportComponent = useRef(null);
+  
   useEffect(() => {
     const getFamily =async () => {
       try {
-        const family = await publicRequest.get(`/family/details/info/${id}`)
+        const family = await userReq.get(`/family/details/info/${id}`)
         setFamily(family.data.data.data)
       } catch (err) {
         console.log(err)
@@ -26,8 +26,8 @@ const ViewFamily = () => {
   }, [id]);
 
   const handleClick = () => {
-    pdfExportComponent.current.save()
-  }
+    pdfExportComponent.current.save();
+  };
 
   return (
     <div className='view-family default'>

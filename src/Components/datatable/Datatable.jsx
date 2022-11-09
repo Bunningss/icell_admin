@@ -11,7 +11,7 @@ const Datatable = ({ dataColumns, dataRows, actionColumn }) => {
         className="datagrid"
         rows={dataRows}
         columns={dataColumns.concat(actionColumn)}
-        pageSize={15}
+        pageSize={50}
         rowsPerPageOptions={[9]}
         getRowId={(row) => row._id}
       />

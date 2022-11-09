@@ -2,16 +2,15 @@ import './Communities.scss';
 import Datatable from '../../Components/datatable/Datatable';
 import { mahalColumns, mahalAction } from '../../static';
 import { useEffect, useState } from 'react';
-import { publicRequest } from '../../requestMethods';
+import { userReq } from '../../requestMethods';
 
 const Communities = () => {
   const [rows, setRows] = useState([])
   useEffect(() => {
     const getComms = async () => {
       try {
-        const comms = await publicRequest.get('mahal/ids');
+        const comms = await userReq.get('mahal/ids');
         setRows(comms.data.data.data.ids)
-        // console.log(comms)
       } catch (err) {
         console.log(err)
       }

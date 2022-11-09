@@ -8,6 +8,7 @@ import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
 import PeopleIcon from '@mui/icons-material/People';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 import logo from '../../images/logo.png';
 
 const Sidebar = () => {
@@ -46,6 +47,12 @@ const Sidebar = () => {
                     <Link to='/families'>
                         <FamilyRestroomIcon className='icon text-regular'/>
                         <p className='text-regular sidebar-list-text'>view families</p>
+                    </Link>
+                </li>
+                <li className="list-item">
+                    <Link to='/mahalreport'>
+                        <AssessmentIcon className='icon text-regular'/>
+                        <p className='text-regular sidebar-list-text'>Get Report</p>
                     </Link>
                 </li>
             </ul>

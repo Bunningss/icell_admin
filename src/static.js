@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { userReq } from './requestMethods';
 
 export const familyColumns = [
   {
@@ -23,8 +24,8 @@ export const familyColumns = [
 // Mahal
 export const mahalColumns = [
   {
-    field: "Mahallu ID",
-    mahalId: "MahalId",
+    field: "MahalId",
+    headerName: "Mahal ID",
     width: 230,
     renderCell: (params) => {
 
@@ -36,7 +37,7 @@ export const mahalColumns = [
     },
   },
   {
-    field: "Mahallu Name",
+    field: "MahalluName",
     MahalluName: "MahalluName",
     width: 230,
     renderCell: (params) => {
@@ -52,7 +53,7 @@ export const mahalColumns = [
 
 export const userColumns = [
   {
-    field: "Username",
+    field: "UserName",
     headerName: "Username",
     width: 230,
     renderCell: (params) => {
@@ -64,7 +65,7 @@ export const userColumns = [
     },
   },
   {
-    field: "email",
+    field: "Email",
     headerName: "Email",
     width: 230,
     renderCell: (params) => {
@@ -79,9 +80,10 @@ export const userColumns = [
     field: "MahalId",
     headerName: "Mahal ID",
     width: 230,
+    sortable: true
   },
   {
-    field: "role",
+    field: "TypeOfUser",
     headerName: "Role",
     width: 230,
     renderCell: (params) => {
@@ -100,6 +102,7 @@ export const familyAction = [
       field: "action",
       headerName: "Action",
       width: 200,
+      sortable: false,
       renderCell: (params) => {
 
         return (
@@ -118,6 +121,7 @@ export const familyAction = [
       field: "action",
       headerName: "Action",
       width: 200,
+      sortable: false,
       renderCell: (params) => {
 
         return (
@@ -135,13 +139,45 @@ export const familyAction = [
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 300,
+      sortable: false,
       renderCell: (params) => {
+        let id = params.row.MahalId;
+
+        const handleDelete = async () => {
+          try {
+            const result = await userReq.delete(`mahal/delete/${id}`)
+            result.data.data?.data && window.location.reload()
+          } catch (err) {
+            console.log(err)
+          }
+        };
 
         return (
           <div className="cellAction">
             <Link to={`/mahal/details/${params.row.MahalId}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
+            </Link>
+            <div onClick={handleDelete} style={{ textDecoration: "none" }}>
+              <div className="viewButton">Delete</div>
+            </div>
+          </div>
+        );
+      },
+    },
+  ];
+
+  export const reportAction = [
+    {
+      field: "action",
+      headerName: "Action",
+      width: 300,
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <div className="cellAction">
+            <Link to={`/mahalreport/${params.row.MahalId}`} style={{ textDecoration: "none" }}>
+              <div className="viewButton">View Report</div>
             </Link>
           </div>
         );

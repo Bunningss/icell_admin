@@ -2,7 +2,7 @@ import './MahalDetails.scss';
 import DetailsCard from '../../Components/DetailsCard/DetailsCard';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-import { publicRequest, userReq } from '../../requestMethods';
+import { userReq } from '../../requestMethods';
 import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
 
 const MahalDetails = () => {
@@ -14,7 +14,7 @@ const MahalDetails = () => {
     useEffect(() => {
         const getDetails = async () => {
             try {
-                const details = await publicRequest.get(`/mahal/view/${id}`)
+                const details = await userReq.get(`/mahal/view/${id}`)
                 setData(details.data.data.data.mahalDetails[0])
             }catch (err) {
                 console.log(err)
