@@ -7,6 +7,7 @@ import { userReq } from '../../requestMethods';
 import { PDFExport } from '@progress/kendo-react-pdf';
 
 const MahalReport = () => {
+  const [ query, setQuery ] = useState('');
   const [ mahal, setMahal ] = useState({});
   const [ families, setFamilies ] = useState([]);
   const [ report, setReport ] = useState('');
@@ -67,13 +68,10 @@ const MahalReport = () => {
   };
 
   return (
-    <div className="mahal-report">
+    <div className="mahal-report default">
       <div className="report-filters">
         <div className="wrapper">
-          <input type="text" placeholder='Family ID' className="filter-input input" />
-          <input type="text" placeholder='House Name' className="filter-input input" />
-          <input type="text" placeholder='Land Name' className="filter-input input" />
-          <input type="text" placeholder='Head Name' className="filter-input input" />
+          <input type="text" placeholder='Search by Family Head or Land Name or House Name or Family ID' className="filter-input input" onChange={(e) => setQuery(e.target.value)}/>
         </div>
         <PrimaryButton text={"Download as PDF"} handleClick={handleClick}/>
       </div>
@@ -90,29 +88,34 @@ const MahalReport = () => {
         </div>
         <div className="infobox-wrapper">
           {
-            mahalStats.map((data) => (
-              <InfoBox data={data}/>
+            mahalStats.map((data, indx) => (
+              <InfoBox data={data} key={indx}/>
             ))
           }
         </div>
-        <div className="report-families">
-          <h4 className="title report-families-title">families under {mahal.MahalluName}:</h4>
-          {
-            families.map((family) => (
-              <div className="family">
-                <h4 className="family-details-title title">Family Head <span>{family.HeadName}</span></h4>
-                <h4 className="family-details-title title">House Name <span>{family.HouseName}</span></h4>
-                <h4 className="family-details-title title">Land Name <span>{family.LandName}</span></h4>
-                <h4 className="family-details-title title">Mahal ID <span>{family.MahalId}</span></h4>
-                <h4 className="family-details-title title">Family ID <span>{family.FamilyId}</span></h4>
-                <h4 className="family-details-title title">Members Count <span>{family.MembersCount}</span></h4>
-                <h4 className="family-details-title title">Ration Category <span>{family.RationCategory}</span></h4>
-                <h4 className="family-details-title title">Email <span>{family.Email}</span></h4>
-                <h4 className="family-details-title title">Phone <span>{family.Phone}</span></h4>
-              </div>
-            ))
-          }
-        </div>
+        {
+          families.length > 0 &&
+            <div className="report-families">
+              <h4 className="title report-families-title">families under {mahal.MahalluName}:</h4>
+              {
+                families.filter((item) => {
+                  return query.toLowerCase() === '' ? item : item.HeadName.toLowerCase().includes(query) || item.HouseName.toLowerCase().includes(query) || item.LandName.toLowerCase().includes(query) || item.FamilyId.toLowerCase().includes(query)
+                }).map((family, indx) => (
+                  <div className="family" key={indx}>
+                    <h4 className="family-details-title title">Family Head <span>{family.HeadName}</span></h4>
+                    <h4 className="family-details-title title">House Name <span>{family.HouseName}</span></h4>
+                    <h4 className="family-details-title title">Land Name <span>{family.LandName}</span></h4>
+                    <h4 className="family-details-title title">Mahal ID <span>{family.MahalId}</span></h4>
+                    <h4 className="family-details-title title">Family ID <span>{family.FamilyId}</span></h4>
+                    <h4 className="family-details-title title">Members Count <span>{family.MembersCount}</span></h4>
+                    <h4 className="family-details-title title">Ration Category <span>{family.RationCategory}</span></h4>
+                    <h4 className="family-details-title title">Email <span>{family.Email}</span></h4>
+                    <h4 className="family-details-title title">Phone <span>{family.Phone}</span></h4>
+                  </div>
+                ))
+              }
+            </div>
+        }
       </div>
     </PDFExport>
     </div>

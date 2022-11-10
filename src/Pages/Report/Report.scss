@@ -7,4 +7,36 @@
         color: var(--color-primary);
         text-decoration: underline;
     }
+
+    .report-input {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+
+        thead {
+
+            tr {
+                th {
+                    padding: 10px 0;
+                }
+            }
+        }
+
+        tbody {
+
+            tr {
+                &:nth-child(odd) {
+                    background-color: var(--color-secondary);
+                }
+
+                td {
+                    text-align: center;
+                    text-transform: capitalize;
+                    padding: 10px 0;
+                }
+            }
+        }
+    }
 }
