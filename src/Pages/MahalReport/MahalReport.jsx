@@ -99,7 +99,7 @@ const MahalReport = () => {
               <h4 className="title report-families-title">families under {mahal.MahalluName}:</h4>
               {
                 families.filter((item) => {
-                  return query.toLowerCase() === '' ? item : item.HeadName.toLowerCase().includes(query) || item.HouseName.toLowerCase().includes(query) || item.LandName.toLowerCase().includes(query) || item.FamilyId.toLowerCase().includes(query)
+                  return query.toLowerCase() === '' ? item : item.HeadName?.toLowerCase().includes(query) || item.HouseName?.toLowerCase().includes(query) || item.LandName?.toLowerCase().includes(query) || item.FamilyId?.toLowerCase().includes(query)
                 }).map((family, indx) => (
                   <div className="family" key={indx}>
                     <h4 className="family-details-title title">Family Head <span>{family.HeadName}</span></h4>

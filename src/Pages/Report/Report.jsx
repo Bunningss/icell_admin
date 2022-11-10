@@ -36,7 +36,7 @@ const Report = () => {
         <tbody>
           {
             rows.filter((row) => {
-              return query.toLowerCase() === '' ? row : row.MahalId.toLowerCase().includes(query) || row.MahalluName.toLowerCase().includes(query) || row.MahalluVillage.toLowerCase().includes(query) || row.MahalluThalook.toLowerCase().includes(query) || row.MahalluDistrict.toLowerCase().includes(query) || row.State.toLowerCase().includes(query)
+              return query.toLowerCase() === '' ? row : row?.MahalId?.toLowerCase().includes(query) || row?.MahalluName?.toLowerCase().includes(query) || row?.MahalluVillage?.toLowerCase().includes(query) || row?.MahalluThalook?.toLowerCase().includes(query) || row?.MahalluDistrict?.toLowerCase().includes(query) || row?.State?.toLowerCase().includes(query)
             }).map((row, indx) => (
               <tr key={indx}>
                 <td>{row.MahalId}</td>
