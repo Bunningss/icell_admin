@@ -107,6 +107,16 @@ $mobile: 600px;
     }
 }
 
+.csv-download {
+    border: 1px solid var(--font-primary);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: capitalize;
+    color: var(--font-primary);
+    cursor: pointer;
+}
+
 @keyframes reveal {
     0% {
         opacity: 0;

@@ -15,6 +15,7 @@ const MahalReport = () => {
     mahalId: '',
     rationCategory: ''
   });
+  const [ dlink, setDlink ] = useState('');
   const [ mahal, setMahal ] = useState({});
   const [ families, setFamilies ] = useState([]);
   const [ report, setReport ] = useState('');
@@ -43,13 +44,20 @@ const MahalReport = () => {
     getReport();
   }, [id]);
 
+// Get families
   useEffect(() => {
     const getFamilies = async () => {
       const families = await userReq.get(`family/mahal/family/${id}`);
-      setFamilies(families.data.data.data)
+      setFamilies(families.data.data.data                
+                .filter((item) => { return query.familyId.toLowerCase() === '' ? item : item.FamilyId?.toLowerCase().includes(query.familyId.toLowerCase()) })
+                .filter((item) => { return query.headName.toLowerCase() === '' ? item : item.HeadName?.toLowerCase().includes(query.headName.toLowerCase()) })
+                .filter((item) => { return query.houseName.toLowerCase() === '' ? item : item.HouseName?.toLowerCase().includes(query.houseName.toLowerCase()) })
+                .filter((item) => { return query.landName.toLowerCase() === '' ? item : item.LandName?.toLowerCase().includes(query.landName.toLowerCase()) })
+                .filter((item) => { return query.mahalId.toLowerCase() === '' ? item : item.MahalId?.toLowerCase().includes(query.mahalId.toLowerCase()) })
+                .filter((item) => { return query.rationCategory.toLowerCase() === '' ? item : item.RationCategory?.toLowerCase().includes(query.rationCategory.toLowerCase()) }) )
     };
     getFamilies();
-  }, [id]);
+  }, [query]);
 
   const mahalStats = [
     {
@@ -74,6 +82,28 @@ const MahalReport = () => {
     pdfExportComponent.current.save();
   };
 
+    // Create CSV
+let objUrl;
+const getCsv = () => {
+    let newArr = []
+    const headers = Object.keys(families[0])
+    newArr.push(headers)
+
+    families.forEach((family) => {
+        newArr.push(Object.values(family))
+    })
+
+    let csv = ''
+
+    newArr.forEach((row) => {
+        csv += row.join(',') + '\n'
+    })
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8,' })
+    objUrl = URL.createObjectURL(blob)
+    setDlink(objUrl)
+}
+
   return (
     <div className="mahal-report default">
       <div className="report-filters">
@@ -85,7 +115,10 @@ const MahalReport = () => {
           <input type="text" placeholder='Search By Ration Category' className="filter-input input" onChange={(e) => setQuery({ ...query, ['rationCategory']: e.target.value}) }/>
           <input type="text" placeholder='Search By Family ID' className="filter-input input" onChange={(e) => setQuery({ ...query, ['familyId']: e.target.value}) }/>
         </div>
-        <PrimaryButton text={"Download as PDF"} handleClick={handleClick}/>
+        <div className="btn-wrapper">
+          <PrimaryButton text={"Download as PDF"} handleClick={handleClick}/>
+          <a onClick={getCsv} href={dlink} download='families.csv' className="csv-download">download as CSV</a>
+        </div>
       </div>
     <PDFExport ref={pdfExportComponent} paperSize="A2">
       <div className="report-wrapper">
@@ -110,14 +143,7 @@ const MahalReport = () => {
             <div className="report-families">
               <h4 className="title report-families-title">families under {mahal.MahalluName}:</h4>
               {
-                families
-                .filter((item) => { return query.familyId.toLowerCase() === '' ? item : item.FamilyId?.toLowerCase().includes(query.familyId.toLowerCase()) })
-                .filter((item) => { return query.headName.toLowerCase() === '' ? item : item.HeadName?.toLowerCase().includes(query.headName.toLowerCase()) })
-                .filter((item) => { return query.houseName.toLowerCase() === '' ? item : item.HouseName?.toLowerCase().includes(query.houseName.toLowerCase()) })
-                .filter((item) => { return query.landName.toLowerCase() === '' ? item : item.LandName?.toLowerCase().includes(query.landName.toLowerCase()) })
-                .filter((item) => { return query.mahalId.toLowerCase() === '' ? item : item.MahalId?.toLowerCase().includes(query.mahalId.toLowerCase()) })
-                .filter((item) => { return query.rationCategory.toLowerCase() === '' ? item : item.RationCategory?.toLowerCase().includes(query.rationCategory.toLowerCase()) })
-                .map((family, indx) => (
+                families.map((family, indx) => (
                   <div className="family" key={indx}>
                     <h2 className="family-header">{family.HeadName}'s Family</h2>
                     <h4 className="family-details-title title">Family Head <span>{family.HeadName}</span></h4>
