@@ -67,11 +67,53 @@
     }
 
     .deleteButton {
-      padding: 2px 5px;
+      padding: 2px 35px;
       border-radius: 5px;
       color: crimson;
       border: 1px dotted rgba(220, 20, 60, 0.6);
       cursor: pointer;
+    }
+
+    .confirmation {
+      background-color: #f5f5f7;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+
+      &.active {
+        display: flex;
+      }
+
+      .content {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        .title {
+          font-size: 30px;
+        }
+
+        .btn-wrapper {
+          display: flex;
+          gap: 20px;
+
+          .viewButton {
+            padding: 10px 55px;
+          }
+
+          .deleteButton {
+            padding: 10px 55px;
+          }
+        }
+      }
     }
   }
 }

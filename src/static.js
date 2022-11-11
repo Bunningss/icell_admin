@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { userReq } from './requestMethods';
 
@@ -153,13 +154,26 @@ export const familyAction = [
           }
         };
 
+        const handleAction = () => {
+          document.querySelector('.confirmation').classList.toggle('active');
+        }
+
         return (
           <div className="cellAction">
             <Link to={`/mahal/details/${params.row.MahalId}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
-            <div onClick={handleDelete} style={{ textDecoration: "none" }}>
-              <div className="viewButton">Delete</div>
+            <div style={{ textDecoration: "none" }} onClick={handleAction}>
+              <div className="deleteButton">Delete</div>
+            </div>
+            <div className='confirmation'>
+              <div className='content'>
+                <h4 className='title'>Are you sure you want to delete ?</h4>
+                <div className='btn-wrapper'>
+                  <button className='viewButton' onClick={handleAction}>No</button>
+                  <button className='deleteButton' onClick={handleDelete}>Yes</button>
+                </div>
+              </div>
             </div>
           </div>
         );
