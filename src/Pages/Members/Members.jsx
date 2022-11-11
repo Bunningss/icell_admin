@@ -6,7 +6,14 @@ import { PDFExport } from '@progress/kendo-react-pdf';
 
 const Members = () => {
     const [ members, setMembers ] = useState([]);
-    const [ query, setQuery ] = useState('');
+    const [ query, setQuery ] = useState({
+        name: '',
+        mahalId: '',
+        familyId: '',
+        gender: '',
+        maritalStatus: '',
+        welfareBeneficiary: ''
+    });
 
   const pdfExportComponent = useRef(null);
 
@@ -25,7 +32,12 @@ const handleClick = () => {
   return (
     <div className='members default'>
         <div className="members-filter">
-            <input type="text" className="input members-input" placeholder='Search by Name, Family ID, Mahal ID, Gender' onChange={(e) => setQuery(e.target.value)} />
+            <input type="text" className="input members-input" placeholder='Search by Name' onChange={(e) => setQuery({ ...query, ['name']: e.target.value})} />
+            <input type="text" className="input members-input" placeholder='Search by MahalID' onChange={(e) => setQuery({ ...query, ['mahalId']: e.target.value})} />
+            <input type="text" className="input members-input" placeholder='Search by FamilyID' onChange={(e) => setQuery({ ...query, ['familyId']: e.target.value})} />
+            <input type="text" className="input members-input" placeholder='Search by Gender' onChange={(e) => setQuery({ ...query, ['gender']: e.target.value})} />
+            <input type="text" className="input members-input" placeholder='Search by Marital Status' onChange={(e) => setQuery({ ...query, ['maritalStatus']: e.target.value})} />
+            <input type="text" className="input members-input" placeholder='Search by Welfare Scheme Beneficiary' onChange={(e) => setQuery({ ...query, ['welfareBeneficiary']: e.target.value})} />
         </div>
         <div className="btn-wrapper">
             <PrimaryButton text={'Download as PDF'} handleClick={handleClick}/>
@@ -43,9 +55,14 @@ const handleClick = () => {
                 </thead>
                 <tbody>
                     {
-                        members.filter((item) => {
-                            return query.toLowerCase() === '' ? item : item.MemberName?.toLowerCase().includes(query) || item.FamilyId?.toLowerCase().includes(query) || item.MahalId?.toLowerCase().includes(query) || item.Gender?.toLowerCase().includes(query)
-                        }).map((member, indx) => (
+                        members
+                        .filter((item) => { return query.name.toLowerCase() === '' ? item : item.MemberName?.toLowerCase().includes(query.name.toLowerCase()) })
+                        .filter((item) => { return query.mahalId.toLowerCase() === '' ? item : item.MahalId?.toLowerCase().includes(query.mahalId.toLowerCase()) })
+                        .filter((item) => { return query.familyId.toLowerCase() === '' ? item : item.FamilyId?.toLowerCase().includes(query.familyId.toLowerCase()) })
+                        .filter((item) => { return query.gender.toLowerCase() === '' ? item : item.Gender?.toLowerCase().includes(query.gender.toLowerCase()) })
+                        .filter((item) => { return query.maritalStatus.toLowerCase() === '' ? item : item.MaritalStatus?.toLowerCase().includes(query.maritalStatus.toLowerCase()) })
+                        .filter((item) => { return query.welfareBeneficiary.toLowerCase() === '' ? item : item.WelfareSchemeBeneficiary?.toLowerCase().includes(query.welfareBeneficiary.toLowerCase()) })
+                        .map((member, indx) => (
                             <tr key={indx}>
                                 <td>{member.MemberName}</td>
                                 <td>{member.FamilyId}</td>

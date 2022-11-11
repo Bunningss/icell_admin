@@ -5,7 +5,14 @@ import { Link } from 'react-router-dom';
 
 const Report = () => {
   const [ rows, setRows ] = useState([]);
-  const [ query, setQuery ] = useState('');
+  const [ mahalQuery, setMahalQuery ] = useState({
+    mahalId: "",
+    mahalluDistrict: "",
+    mahalluName: "",
+    mahalluThalook: "",
+    mahalluVillage: "",
+    state: ""
+  });
 
   useEffect(() => {
     const getComms = async () => {
@@ -22,9 +29,14 @@ const Report = () => {
   return (
     <div className='report default'>
       <h2 className="report-title">Click to view specific mahal report</h2>
-
-      <input type="text" placeholder='Search by MahalluVillage, MahalluThalook, MahalluDistrict, State' className="input report-input" onChange={(e) => setQuery(e.target.value)} />
-      {/* <Datatable dataColumns={mahalColumns} dataRows={rows} actionColumn={reportAction}/> */}
+      <div className="mahal-filters">
+        <input type="text" placeholder='Search By Mahal ID' className="input report-input" onChange={(e) => setMahalQuery({ ...mahalQuery, ['mahalId']: e.target.value}) }/>
+        <input type="text" placeholder='Search By Mahallu District' className="input report-input" onChange={(e) => setMahalQuery({ ...mahalQuery, ["mahalluDistrict"]: e.target.value}) }/>
+        <input type="text" placeholder='Search By Mahallu Name' className="input report-input" onChange={(e) => setMahalQuery({ ...mahalQuery, ["mahalluName"]: e.target.value}) }/>
+        <input type="text" placeholder='Search By Mahallu Thalook' className="input report-input" onChange={(e) => setMahalQuery({ ...mahalQuery, ["mahalluThalook"]: e.target.value}) }/>
+        <input type="text" placeholder='Search By Mahallu Village' className="input report-input" onChange={(e) => setMahalQuery({ ...mahalQuery, ["mahalluVillage"]: e.target.value}) }/>
+        <input type="text" placeholder='Search By State' className="input report-input" onChange={(e) => setMahalQuery({ ...mahalQuery, ["state"]: e.target.value})} />
+      </div>
       <table>
         <thead>
           <tr>
@@ -35,9 +47,14 @@ const Report = () => {
         </thead>
         <tbody>
           {
-            rows.filter((row) => {
-              return query.toLowerCase() === '' ? row : row?.MahalId?.toLowerCase().includes(query) || row?.MahalluName?.toLowerCase().includes(query) || row?.MahalluVillage?.toLowerCase().includes(query) || row?.MahalluThalook?.toLowerCase().includes(query) || row?.MahalluDistrict?.toLowerCase().includes(query) || row?.State?.toLowerCase().includes(query)
-            }).map((row, indx) => (
+            rows
+            .filter((item) => { return mahalQuery.mahalId?.toLowerCase() === '' ? item : item.MahalId?.toLowerCase().includes(mahalQuery.mahalId.toLowerCase()) })
+            .filter((item) => { return mahalQuery.mahalluDistrict?.toLowerCase() === '' ? item : item.MahalluDistrict?.toLowerCase().includes(mahalQuery.mahalluDistrict.toLowerCase()) })
+            .filter((item) => { return mahalQuery.mahalluName?.toLowerCase() === '' ? item : item.MahalluName?.toLowerCase().includes(mahalQuery.mahalluName.toLowerCase()) })
+            .filter((item) => { return mahalQuery.mahalluThalook?.toLowerCase() === '' ? item : item.MahalluThalook?.toLowerCase().includes(mahalQuery.mahalluThalook.toLowerCase()) })
+            .filter((item) => { return mahalQuery.mahalluVillage?.toLowerCase() === '' ? item : item.MahalluVillage?.toLowerCase().includes(mahalQuery.mahalluVillage.toLowerCase()) })
+            .filter((item) => { return mahalQuery.state?.toLowerCase() === '' ? item : item.State?.toLowerCase().includes(mahalQuery.state.toLowerCase()) })
+            .map((row, indx) => (
               <tr key={indx}>
                 <td>{row.MahalId}</td>
                 <td>{row.MahalluName}</td>

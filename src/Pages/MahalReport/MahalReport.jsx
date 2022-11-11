@@ -7,7 +7,14 @@ import { userReq } from '../../requestMethods';
 import { PDFExport } from '@progress/kendo-react-pdf';
 
 const MahalReport = () => {
-  const [ query, setQuery ] = useState('');
+  const [ query, setQuery ] = useState({
+    headName: '',
+    familyId: "",
+    houseName: '',
+    landName: '',
+    mahalId: '',
+    rationCategory: ''
+  });
   const [ mahal, setMahal ] = useState({});
   const [ families, setFamilies ] = useState([]);
   const [ report, setReport ] = useState('');
@@ -71,7 +78,12 @@ const MahalReport = () => {
     <div className="mahal-report default">
       <div className="report-filters">
         <div className="wrapper">
-          <input type="text" placeholder='Search by Family Head or Land Name or House Name or Family ID' className="filter-input input" onChange={(e) => setQuery(e.target.value)}/>
+          <input type="text" placeholder='Search By Head Name' className="filter-input input" onChange={(e) => setQuery({ ...query, ['headName']: e.target.value}) }/>
+          <input type="text" placeholder='Search By Mahal ID' className="filter-input input" onChange={(e) => setQuery({ ...query, ['mahalId']: e.target.value}) }/>
+          <input type="text" placeholder='Search By Land Name' className="filter-input input" onChange={(e) => setQuery({ ...query, ['landName']: e.target.value}) }/>
+          <input type="text" placeholder='Search By House Name' className="filter-input input" onChange={(e) => setQuery({ ...query, ['houseName']: e.target.value}) }/>
+          <input type="text" placeholder='Search By Ration Category' className="filter-input input" onChange={(e) => setQuery({ ...query, ['rationCategory']: e.target.value}) }/>
+          <input type="text" placeholder='Search By Family ID' className="filter-input input" onChange={(e) => setQuery({ ...query, ['familyId']: e.target.value}) }/>
         </div>
         <PrimaryButton text={"Download as PDF"} handleClick={handleClick}/>
       </div>
@@ -98,9 +110,14 @@ const MahalReport = () => {
             <div className="report-families">
               <h4 className="title report-families-title">families under {mahal.MahalluName}:</h4>
               {
-                families.filter((item) => {
-                  return query.toLowerCase() === '' ? item : item.HeadName?.toLowerCase().includes(query) || item.HouseName?.toLowerCase().includes(query) || item.LandName?.toLowerCase().includes(query) || item.FamilyId?.toLowerCase().includes(query)
-                }).map((family, indx) => (
+                families
+                .filter((item) => { return query.familyId.toLowerCase() === '' ? item : item.FamilyId?.toLowerCase().includes(query.familyId.toLowerCase()) })
+                .filter((item) => { return query.headName.toLowerCase() === '' ? item : item.HeadName?.toLowerCase().includes(query.headName.toLowerCase()) })
+                .filter((item) => { return query.houseName.toLowerCase() === '' ? item : item.HouseName?.toLowerCase().includes(query.houseName.toLowerCase()) })
+                .filter((item) => { return query.landName.toLowerCase() === '' ? item : item.LandName?.toLowerCase().includes(query.landName.toLowerCase()) })
+                .filter((item) => { return query.mahalId.toLowerCase() === '' ? item : item.MahalId?.toLowerCase().includes(query.mahalId.toLowerCase()) })
+                .filter((item) => { return query.rationCategory.toLowerCase() === '' ? item : item.RationCategory?.toLowerCase().includes(query.rationCategory.toLowerCase()) })
+                .map((family, indx) => (
                   <div className="family" key={indx}>
                     <h2 className="family-header">{family.HeadName}'s Family</h2>
                     <h4 className="family-details-title title">Family Head <span>{family.HeadName}</span></h4>
