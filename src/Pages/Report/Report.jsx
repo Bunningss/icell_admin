@@ -79,7 +79,10 @@ const handleClick = () => {
       </div>
       <div className="btn-wrapper">
         <PrimaryButton text={'download as PDF'} handleClick={handleClick}/>
-        <a onClick={getCsv} href={dlink} download='mahal.csv' className='csv-download'>download as CSV</a>
+        {
+          rows.length > 0 &&
+            <a onClick={getCsv} href={dlink} download='mahal.csv' className='csv-download'>download as CSV</a>
+        }
       </div>
       <PDFExport ref={pdfExportComponent} paperSize="A2">
       <table>

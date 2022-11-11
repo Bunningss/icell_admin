@@ -117,7 +117,10 @@ const getCsv = () => {
         </div>
         <div className="btn-wrapper">
           <PrimaryButton text={"Download as PDF"} handleClick={handleClick}/>
-          <a onClick={getCsv} href={dlink} download='families.csv' className="csv-download">download as CSV</a>
+          {
+            families.length > 0 &&
+              <a onClick={getCsv} href={dlink} download='families.csv' className="csv-download">download as CSV</a>
+          }
         </div>
       </div>
     <PDFExport ref={pdfExportComponent} paperSize="A2">
