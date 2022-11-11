@@ -14,7 +14,7 @@ const MahalReport = () => {
   const location = useLocation();
   let id = location.pathname.split('/')[2];
 
-  const pdfExportComponent = useRef(null)
+  const pdfExportComponent = useRef(null);
 
   useEffect(() => {
     const getMahal = async () => {
@@ -83,7 +83,7 @@ const MahalReport = () => {
             <h4 className="title mahal-details-title">Mahallu ID <span>{mahal.MahalId}</span></h4>
             <h4 className="title mahal-details-title">mosque Name <span>{mahal.MosqueName}</span></h4>
             <h4 className="title mahal-details-title">Mahallu village<span>{mahal.MahalluVillage}</span></h4>
-            <h4 className="title mahal-details-title">mahal thalook<span>{mahal.MahalluThalook}</span></h4>
+            <h4 className="title mahal-details-title">mahallu thalook<span>{mahal.MahalluThalook}</span></h4>
             <h4 className="title mahal-details-title">Mahallu district<span>{mahal.MahalluDistrict}</span></h4>
         </div>
         <div className="infobox-wrapper">

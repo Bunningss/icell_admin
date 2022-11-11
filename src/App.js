@@ -20,6 +20,7 @@ import UserDetails from './Pages/UserDetails/UserDetails';
 import NewMahal from './Pages/NewMahal/NewMahal';
 import Report from './Pages/Report/Report';
 import MahalReport from './Pages/MahalReport/MahalReport';
+import Members from './Pages/Members/Members';
 
 function App() {
   const [ family, setFamily ] = useState('');
@@ -103,6 +104,7 @@ useEffect(() => {
               <Route exact path='/communities/new' element={<NewMahal/>}/>
               <Route exact path='/mahalreport' element={<Report/>}/>
               <Route exact path='/mahalreport/:id' element={<MahalReport/>}/>
+              <Route exact path='/familymembers' element={<Members/>}/>
             </>
           }
           {

@@ -50,6 +50,12 @@ const Sidebar = () => {
                     </Link>
                 </li>
                 <li className="list-item">
+                    <Link to='/familymembers'>
+                        <PeopleIcon className='icon text-regular'/>
+                        <p className='text-regular sidebar-list-text'>View Members</p>
+                    </Link>
+                </li>
+                <li className="list-item">
                     <Link to='/mahalreport'>
                         <AssessmentIcon className='icon text-regular'/>
                         <p className='text-regular sidebar-list-text'>Get Report</p>

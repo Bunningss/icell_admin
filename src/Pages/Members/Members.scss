@@ -1,0 +1,46 @@
+.members {
+    padding: 10px;
+
+    .members-filter {
+        width: 100%;
+
+        .members-input {
+            width: 100%;
+        }
+    }
+
+    .members-wrapper {
+        width: 100%;
+
+        table {
+            width: 100%;
+            margin: 15px 0;
+
+            thead {
+                background-color: rgb(245, 245, 245);
+                tr {
+
+                    th {
+                        padding: 10px;
+                    }
+                }
+            }
+
+            tbody {
+
+                tr {
+
+                    &:nth-child(odd) {
+                        background-color: var(--color-secondary);
+                    }
+
+                    td {
+                        text-align: center;
+                        padding: 10px 0;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+    }
+}
