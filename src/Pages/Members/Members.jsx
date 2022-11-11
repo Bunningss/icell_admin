@@ -8,7 +8,6 @@ const Members = () => {
     const [ members, setMembers ] = useState([]);
     const [ query, setQuery ] = useState('');
 
-
   const pdfExportComponent = useRef(null);
 
     useEffect(() => {

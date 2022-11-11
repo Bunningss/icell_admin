@@ -17,6 +17,12 @@ const MobileSidebar = ({ active, setActive }) => {
             <Link to='/families'>
                 <li className="m-sidebar-list-item">Families</li>
             </Link>
+            <Link to='/familymembers'>
+                <li className="m-sidebar-list-item">View Members</li>
+            </Link>
+            <Link to='/mahalreport'>
+                <li className="m-sidebar-list-item">Report</li>
+            </Link>
             <Link to='/communities/new'>
                 <li className="m-sidebar-list-item">Add New Mahal</li>
             </Link>
