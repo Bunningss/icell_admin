@@ -102,6 +102,7 @@ const MahalReport = () => {
                   return query.toLowerCase() === '' ? item : item.HeadName?.toLowerCase().includes(query) || item.HouseName?.toLowerCase().includes(query) || item.LandName?.toLowerCase().includes(query) || item.FamilyId?.toLowerCase().includes(query)
                 }).map((family, indx) => (
                   <div className="family" key={indx}>
+                    <h2 className="family-header">{family.HeadName}'s Family</h2>
                     <h4 className="family-details-title title">Family Head <span>{family.HeadName}</span></h4>
                     <h4 className="family-details-title title">House Name <span>{family.HouseName}</span></h4>
                     <h4 className="family-details-title title">Land Name <span>{family.LandName}</span></h4>
