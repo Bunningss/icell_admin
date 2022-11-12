@@ -1,62 +1,61 @@
-@import '../../index.scss';
+@import "../../index.scss";
 
 .dashboard {
+  .col {
+    padding: 10px;
 
-    .col {
-        padding: 10px;
-
-        .dashboard-header {
-            text-transform: uppercase;
-        }
-
-        .dashboard-access {
-            font-weight: 600;
-            margin: 5px 0;
-
-            span {
-                color: var(--color-primary);
-            }
-        }
-
-        .info {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin: 35px 0;
-
-            @include mobile {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .recent {
-            width: 100%;
-            display: flex;
-            gap: 10px;
-
-            @include ipad {
-                flex-direction: column;
-            }
-
-            .recent-content {
-                margin: 10px 0;
-
-                .recent-text {
-                    text-transform: capitalize;
-                    font-weight: 600;
-                    text-decoration: underline;
-                }
-            }
-
-            .family {
-                flex: 1;
-//                 background-color: green;
-            }
-
-            .mahals {
-                flex: 1;
-//                background-color: greenyellow;
-            }
-        }
+    .dashboard-header {
+      text-transform: uppercase;
     }
+
+    .dashboard-access {
+      font-weight: 600;
+      margin: 5px 0;
+
+      span {
+        color: var(--color-primary);
+      }
+    }
+
+    .info {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 35px 0;
+
+      @include mobile {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .recent {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+
+      @include ipad {
+        flex-direction: column;
+      }
+
+      .recent-content {
+        margin: 10px 0;
+
+        .recent-text {
+          text-transform: capitalize;
+          font-weight: 600;
+          text-decoration: underline;
+        }
+      }
+
+      .family {
+        flex: 1;
+        //                 background-color: green;
+      }
+
+      .mahals {
+        flex: 1;
+        //                background-color: greenyellow;
+      }
+    }
+  }
 }

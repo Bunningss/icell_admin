@@ -1,79 +1,79 @@
-@import '../../index.scss';
+@import "../../index.scss";
 
 .sidebar {
-    min-height: 100vh;
-    height: 100%;
-    border-right: .5px solid var(--color-secondary);
+  min-height: 100vh;
+  height: 100%;
+  border-right: 0.5px solid var(--color-secondary);
 
-    @include ipad {
-        display: none;
+  @include ipad {
+    display: none;
+  }
+
+  .col {
+    padding: 5px;
+    border-bottom: 1px solid var(--color-secondary);
+
+    &:nth-child(1) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .col {
-        padding: 5px;
-        border-bottom: 1px solid var(--color-secondary);
-
-        &:nth-child(1) {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo {
-            width: 100px;
-            user-select: none;
-        }
-
-        .sidebar-list {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-
-            .list-item {
-                padding: 15px 0;
-                border-bottom: 1px solid #000;
-                
-                a {
-                    display: flex;
-                    align-items: center;
-                    color: var(--font-primary);
-                    background-color: var(--color-accent);
-
-                    .icon {
-                        margin-right: 5px;
-                    }
-
-                    .sidebar-list-text {
-                        text-transform: capitalize;
-                    }
-                }
-            }
-        }
-
-        .logout-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 10px 0;
-            margin: 30px 0 0 0;
-            background-color: var(--color-accent);
-            cursor: pointer;
-            border-top: 1px solid var(--color-secondary);
-
-            div {
-                display: flex;
-                align-items: center;
-                gap: 5px;
-                width: 100%;
-            }
-
-            a {
-                display: flex;
-                align-items: center;
-                gap: 5px;
-                color: inherit;
-                width: 100%;
-            }
-        }
+    .logo {
+      width: 100px;
+      user-select: none;
     }
+
+    .sidebar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .list-item {
+        padding: 15px 0;
+        border-bottom: 1px solid #000;
+
+        a {
+          display: flex;
+          align-items: center;
+          color: var(--font-primary);
+          background-color: var(--color-accent);
+
+          .icon {
+            margin-right: 5px;
+          }
+
+          .sidebar-list-text {
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+
+    .logout-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 0;
+      margin: 30px 0 0 0;
+      background-color: var(--color-accent);
+      cursor: pointer;
+      border-top: 1px solid var(--color-secondary);
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        width: 100%;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: inherit;
+        width: 100%;
+      }
+    }
+  }
 }

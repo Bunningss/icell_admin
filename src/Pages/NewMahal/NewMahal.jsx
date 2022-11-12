@@ -1,37 +1,37 @@
-import './NewMahal.scss';
-import FormInput from '../../Components/FormInput/FormInput';
-import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
-import { useState } from 'react';
-import { userReq } from '../../requestMethods';
+import "./NewMahal.scss";
+import FormInput from "../../Components/FormInput/FormInput";
+import PrimaryButton from "../../Components/PrimaryButton/PrimaryButton";
+import { useState } from "react";
+import { userReq } from "../../requestMethods";
 
 const NewMahal = () => {
-    const [ data, setData ] = useState({
-        MahalluName: "",
-        MosqueName: "",
-        MahalluVillage: "",
-        MahalluThalook: "",
-        MahalluDistrict: "",
-        State: "",
-        PresidentName: "",
-        PresidentEmail: "",
-        PresidentPhone: "",
-        SecretaryName: "",
-        SecretaryEmail: "",
-        SecretaryPhone: "",
-        TreasurerName: "",
-        TreasurerEmail: "",
-        TreasurerPhone: ""
-    });
-    const [ error, setError ] = useState('');
+  const [data, setData] = useState({
+    MahalluName: "",
+    MosqueName: "",
+    MahalluVillage: "",
+    MahalluThalook: "",
+    MahalluDistrict: "",
+    State: "",
+    PresidentName: "",
+    PresidentEmail: "",
+    PresidentPhone: "",
+    SecretaryName: "",
+    SecretaryEmail: "",
+    SecretaryPhone: "",
+    TreasurerName: "",
+    TreasurerEmail: "",
+    TreasurerPhone: "",
+  });
+  const [error, setError] = useState("");
 
-    const inputs = [
+  const inputs = [
     {
       name: "MahalluName",
       type: "text",
       placeholder: "Mahallu Name",
       required: true,
       minLength: 3,
-      errorMsg: "Enter Mahallu Name"
+      errorMsg: "Enter Mahallu Name",
     },
     {
       name: "MosqueName",
@@ -39,7 +39,7 @@ const NewMahal = () => {
       placeholder: "Mosque Name",
       required: true,
       minLength: 3,
-      errorMsg: "Enter Mahallu Name"
+      errorMsg: "Enter Mahallu Name",
     },
     {
       name: "MahalluVillage",
@@ -47,7 +47,7 @@ const NewMahal = () => {
       placeholder: "Mahallu Village",
       required: true,
       minLength: 3,
-      errorMsg: "Enter Mahallu Village Name"
+      errorMsg: "Enter Mahallu Village Name",
     },
     {
       name: "MahalluThalook",
@@ -55,7 +55,7 @@ const NewMahal = () => {
       placeholder: "Mahallu Thalook",
       required: true,
       minLength: 3,
-      errorMsg: "Enter Mahallu Thalook"
+      errorMsg: "Enter Mahallu Thalook",
     },
     {
       name: "MahalluDistrict",
@@ -63,7 +63,7 @@ const NewMahal = () => {
       placeholder: "Mahallu District",
       required: true,
       minLength: 3,
-      errorMsg: "Enter Mahallu District Name"
+      errorMsg: "Enter Mahallu District Name",
     },
     {
       name: "State",
@@ -71,7 +71,7 @@ const NewMahal = () => {
       placeholder: "State Name",
       required: true,
       minLength: 3,
-      errorMsg: "Enter State Name"
+      errorMsg: "Enter State Name",
     },
     {
       name: "PresidentName",
@@ -79,7 +79,7 @@ const NewMahal = () => {
       placeholder: "President Name",
       required: true,
       minLength: 3,
-      errorMsg: "Enter President Name"
+      errorMsg: "Enter President Name",
     },
     {
       name: "PresidentEmail",
@@ -87,7 +87,7 @@ const NewMahal = () => {
       placeholder: "President Email",
       required: true,
       minLength: 3,
-      errorMsg: "Enter President Email"
+      errorMsg: "Enter President Email",
     },
     {
       name: "PresidentPhone",
@@ -96,7 +96,7 @@ const NewMahal = () => {
       required: true,
       minLength: 5,
       min: 1,
-      errorMsg: "Enter President Number"
+      errorMsg: "Enter President Number",
     },
     {
       name: "SecretaryName",
@@ -104,7 +104,7 @@ const NewMahal = () => {
       placeholder: "Secretary Name",
       required: true,
       minLength: 3,
-      errorMsg: "Enter Secretary Name"
+      errorMsg: "Enter Secretary Name",
     },
     {
       name: "SecretaryEmail",
@@ -112,7 +112,7 @@ const NewMahal = () => {
       placeholder: "Secretary Email",
       required: true,
       minLength: 3,
-      errorMsg: "Enter Secretary Email"
+      errorMsg: "Enter Secretary Email",
     },
     {
       name: "SecretaryPhone",
@@ -121,7 +121,7 @@ const NewMahal = () => {
       required: true,
       minLength: 5,
       min: 1,
-      errorMsg: "Enter Secretary Phone"
+      errorMsg: "Enter Secretary Phone",
     },
     {
       name: "TreasurerName",
@@ -129,7 +129,7 @@ const NewMahal = () => {
       placeholder: "Treasurer Name",
       required: true,
       minLength: 3,
-      errorMsg: "Enter Treasurer Name"
+      errorMsg: "Enter Treasurer Name",
     },
     {
       name: "TreasurerEmail",
@@ -137,7 +137,7 @@ const NewMahal = () => {
       placeholder: "Treasurer Email",
       required: true,
       minLength: 3,
-      errorMsg: "Enter Treasurer Email"
+      errorMsg: "Enter Treasurer Email",
     },
     {
       name: "TreasurerPhone",
@@ -146,40 +146,35 @@ const NewMahal = () => {
       required: true,
       minLength: 5,
       min: 1,
-      errorMsg: "Enter Treasurer Phone"
+      errorMsg: "Enter Treasurer Phone",
     },
   ];
   const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value })
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const result = await userReq.post('/mahal/create', {...data})
-        result.data.data.data && window.location.reload();
+      const result = await userReq.post("/mahal/create", { ...data });
+      result.data.data.data && window.location.reload();
     } catch (err) {
-        setError(err.response.data.error.error)
+      setError(err.response.data.error.error);
     }
-  }
+  };
 
   return (
-    <div className='new-mahal default'>
-        <h2 className="header section-header">Add new mahal</h2>
-        <form className="wrapper" onSubmit={handleSubmit}>
-            {
-                inputs.map((input, indx) => (
-                    <FormInput input={input} key={indx} handleChange={handleChange}/>
-                ))
-            }
-            {
-                error &&
-                    <p className="error-message">{error}</p>
-            }
-            <PrimaryButton text={"create new mahal"}/>
-        </form>
+    <div className="new-mahal default">
+      <h2 className="header section-header">Add new mahal</h2>
+      <form className="wrapper" onSubmit={handleSubmit}>
+        {inputs.map((input, indx) => (
+          <FormInput input={input} key={indx} handleChange={handleChange} />
+        ))}
+        {error && <p className="error-message">{error}</p>}
+        <PrimaryButton text={"create new mahal"} />
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default NewMahal
+export default NewMahal;

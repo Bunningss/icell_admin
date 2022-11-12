@@ -1,51 +1,51 @@
-@import '../../index.scss';
+@import "../../index.scss";
 
 .member-card {
+  width: 100%;
+  background-color: #fff;
+  min-height: 300px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid var(--color-primary);
+
+  @include mobile {
     width: 100%;
-    background-color: #fff;
-    min-height: 300px;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid var(--color-primary);
+  }
+
+  &:nth-child(odd) {
+    border-left: none;
 
     @include mobile {
-        width: 100%;
+      border: 1px solid var(--color-primary);
     }
+  }
 
-    &:nth-child(odd) {
-        border-left: none;
+  &:nth-child(even) {
+    border-right: none;
 
-        @include mobile {
-            border: 1px solid var(--color-primary);
-        }
+    @include mobile {
+      border: 1px solid var(--color-primary);
     }
+  }
 
-    &:nth-child(even) {
-        border-right: none;
+  .member-header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
 
-        @include mobile {
-            border: 1px solid var(--color-primary);
-        }
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 50%;
+
+      .family-text {
+        border-bottom: 1px solid var(--color-secondary);
+      }
     }
-
-    .member-header {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    .container {
-        display: flex;
-        justify-content: space-between;
-
-        .col {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 50%;
-
-            .family-text {
-                border-bottom: 1px solid var(--color-secondary);
-            }
-        }
-    }
+  }
 }

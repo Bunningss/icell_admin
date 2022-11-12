@@ -1,22 +1,22 @@
 .infobox {
-    width: 100%;
-    height: 200px;
-    border: 1px solid var(--color-secondary);
-    user-select: none;
+  width: 100%;
+  height: 200px;
+  border: 1px solid var(--color-secondary);
+  user-select: none;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-    .infobox-header {
-        text-align: center;
-        text-transform: capitalize;
-        color: var(--color-primary);
-    }
+  .infobox-header {
+    text-align: center;
+    text-transform: capitalize;
+    color: var(--color-primary);
+  }
 
-    .infobox-text {
-        text-align: center;
-        text-transform: capitalize;
-    }
+  .infobox-text {
+    text-align: center;
+    text-transform: capitalize;
+  }
 }

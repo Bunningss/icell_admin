@@ -2,11 +2,9 @@ import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 
 const Datatable = ({ dataColumns, dataRows, actionColumn }) => {
-
   return (
     <div className="datatable">
-      <div className="datatableTitle">
-      </div>
+      <div className="datatableTitle"></div>
       <DataGrid
         className="datagrid"
         rows={dataRows}

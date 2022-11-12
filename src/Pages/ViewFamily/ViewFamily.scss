@@ -1,75 +1,69 @@
-@import '../../index.scss';
+@import "../../index.scss";
 
 .view-family {
-    padding: 10px;
-    position: relative;
+  padding: 10px;
+  position: relative;
 
-    .logo {
-        width: 200px;
-        position: absolute;
+  .logo {
+    width: 200px;
+    position: absolute;
 
-        @include mobile {
-            display: none;
-        }
+    @include mobile {
+      display: none;
+    }
+  }
+
+  .button {
+    padding: 15px;
+    border: none;
+    background-color: var(--font-primary);
+    color: var(--color-secondary);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .family {
+    .header {
+      margin-top: 10px;
     }
 
-    .button {
-        padding: 15px;
-        border: none;
-        background-color: var(--font-primary);
-        color: var(--color-secondary);
-        border-radius: 5px;
-        cursor: pointer;
+    .family-text {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--color-secondary);
+      padding: 10px 5px;
+
+      @include mobile {
+        font-size: 12px;
+      }
+
+      span {
+        width: 50%;
+      }
     }
+  }
 
-    .family {
-        .header {
-            margin-top: 10px;
-        }
+  .members {
+    .content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
 
-        .family-text {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--color-secondary);
-            padding: 10px 5px;
+      @include mobile {
+        grid-template-columns: 1fr;
+      }
 
-            @include mobile {
+      .member-card {
+        .container {
+          .col {
+            .family-text {
+              @include mobile {
                 font-size: 12px;
+              }
             }
-
-            span {
-                width: 50%;
-            }
+          }
         }
+      }
     }
-
-    .members {
-
-        .content {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-
-            @include mobile {
-                grid-template-columns: 1fr;
-            }
-
-            .member-card {
-
-                .container {
-
-                    .col {
-
-                        .family-text {
-
-                            @include mobile {
-                                font-size: 12px;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
+  }
 }

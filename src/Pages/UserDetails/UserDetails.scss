@@ -1,29 +1,29 @@
 .user-details {
-    padding: 10px;
+  padding: 10px;
 
-    .status-form {
-        margin: 10px 0;
-        display: flex;
-        flex-direction: column;
-        max-width: 300px;
+  .status-form {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
 
-        p {
-            span {
-                font-weight: 600;
-                
-                &.Enabled {
-                    color: green;
-                }
+    p {
+      span {
+        font-weight: 600;
 
-                &.Disabled {
-                    color: red;
-                }
-            }
+        &.Enabled {
+          color: green;
         }
 
-        select {
-            padding: 12px;
-            min-width: 200px;
+        &.Disabled {
+          color: red;
         }
+      }
     }
+
+    select {
+      padding: 12px;
+      min-width: 200px;
+    }
+  }
 }

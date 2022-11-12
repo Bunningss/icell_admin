@@ -1,127 +1,127 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap");
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Nunito', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
 }
 
 :root {
-    --color-primary: #372B75;
-    --color-secondary: lightgrey;
-    --color-accent: #fff;
-    --font-primary: #212529;
-    --ubuntu: 'Ubuntu Mono', monospace;
+  --color-primary: #372b75;
+  --color-secondary: lightgrey;
+  --color-accent: #fff;
+  --font-primary: #212529;
+  --ubuntu: "Ubuntu Mono", monospace;
 }
 
 body {
-    background-color: #FFF;
-    color: var(--font-primary);
+  background-color: #fff;
+  color: var(--font-primary);
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 $ipad: 820px;
 @mixin ipad {
-    @media (max-width: #{$ipad}) {
-        @content
-    }
+  @media (max-width: #{$ipad}) {
+    @content;
+  }
 }
 
 $mobile: 600px;
 @mixin mobile {
-    @media (max-width: #{$mobile}) {
-        @content
-    }
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
 }
 
 .default {
-    animation: reveal 1s linear;
+  animation: reveal 1s linear;
 }
 
 .header {
-    font-size: 50px;
+  font-size: 50px;
 
-    @include ipad {
-        font-size: 40px;
-    }
+  @include ipad {
+    font-size: 40px;
+  }
 
-    @include mobile {
-        font-size: 30px;
-    }
+  @include mobile {
+    font-size: 30px;
+  }
 }
 
 .title {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .text-regular {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .background {
-    padding: 20px 0;
+  padding: 20px 0;
 }
 
 .section-header {
-    padding: 15px 0;
-    text-align: center;
-    text-transform: uppercase;
-    font-family: var(--ubuntu);
-    color: var(--color-primary);
-    border-bottom: 1px solid var(--font-primary);
-    user-select: none;
+  padding: 15px 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--ubuntu);
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--font-primary);
+  user-select: none;
 }
 
 .button {
-    padding: 12px;
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
-    font-size: 16px;
-    border: none;
-    outline: none;
-    font-weight: 600;
-    text-transform: capitalize;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 12px;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  font-size: 16px;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  text-transform: capitalize;
+  border-radius: 5px;
+  cursor: pointer;
 
-    @include mobile {
-        padding: 10px;
-    }
+  @include mobile {
+    padding: 10px;
+  }
 }
 
 .error-message {
-    margin: 5px 0;
-    color: red;
-    text-align: center;
+  margin: 5px 0;
+  color: red;
+  text-align: center;
 }
 
 .no-flex {
-    flex: 1;
+  flex: 1;
 
-    @include ipad {
-        flex: 0;
-    }
+  @include ipad {
+    flex: 0;
+  }
 }
 
 .csv-download {
-    border: 1px solid var(--font-primary);
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    text-transform: capitalize;
-    color: var(--font-primary);
-    cursor: pointer;
+  border: 1px solid var(--font-primary);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  text-transform: capitalize;
+  color: var(--font-primary);
+  cursor: pointer;
 }
 
 @keyframes reveal {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

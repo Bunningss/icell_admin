@@ -1,80 +1,78 @@
 .mahal-report {
+  .report-filters {
+    padding: 10px;
 
-    .report-filters {
-        padding: 10px;
-
-        .wrapper {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 5px;
-        }
-
-        .btn-wrapper {
-            display: flex;
-            gap: 5px;
-        }
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
     }
 
-    .report-wrapper {
-        padding: 10px;
-
-        .mahallu-details {
-
-            .mahal-details-title {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                border-bottom: 1px solid var(--color-secondary);
-                padding: 10px 0;
-                text-transform: capitalize;
-
-                span {
-                    color: var(--color-primary);
-                }
-            }
-        }
-
-        .infobox-wrapper {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-            margin: 15px 0;
-        }
-
-        .report-families {
-            margin: 15px 0;
-
-            .report-families-title {
-                text-transform: capitalize;
-                font-size: 24px;
-                text-decoration: underline;
-                color: var(--color-primary);
-            }
-
-            .family {
-                margin: 20px 0;
-                border: 1px solid var(--color-primary);
-                padding: 5px;
-
-                .family-header {
-                    text-align: center;
-                    text-transform: capitalize;
-                    font-size: 35px;
-                    text-decoration: underline;
-                    margin: 15px 0;
-                }
-
-                .family-details-title {
-                    padding: 5px 0;
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    border-bottom: 1px solid var(--color-secondary);
-                    text-transform: capitalize;
-
-                    span {
-                        color: var(--color-primary);
-                    }
-                }
-            }
-        }
+    .btn-wrapper {
+      display: flex;
+      gap: 5px;
     }
+  }
+
+  .report-wrapper {
+    padding: 10px;
+
+    .mahallu-details {
+      .mahal-details-title {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: 1px solid var(--color-secondary);
+        padding: 10px 0;
+        text-transform: capitalize;
+
+        span {
+          color: var(--color-primary);
+        }
+      }
+    }
+
+    .infobox-wrapper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      margin: 15px 0;
+    }
+
+    .report-families {
+      margin: 15px 0;
+
+      .report-families-title {
+        text-transform: capitalize;
+        font-size: 24px;
+        text-decoration: underline;
+        color: var(--color-primary);
+      }
+
+      .family {
+        margin: 20px 0;
+        border: 1px solid var(--color-primary);
+        padding: 5px;
+
+        .family-header {
+          text-align: center;
+          text-transform: capitalize;
+          font-size: 35px;
+          text-decoration: underline;
+          margin: 15px 0;
+        }
+
+        .family-details-title {
+          padding: 5px 0;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          border-bottom: 1px solid var(--color-secondary);
+          text-transform: capitalize;
+
+          span {
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+  }
 }
